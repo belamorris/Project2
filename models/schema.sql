@@ -1,5 +1,23 @@
-DROP DATABASE IF EXISTS exampledb;
-CREATE DATABASE exampledb;
+DROP DATABASE IF EXISTS facedb;
+CREATE DATABASE facedb;
 
-DROP DATABASE IF EXISTS testdb;
-CREATE DATABASE testdb;
+USE facedb;
+
+-- Create the table plans.
+CREATE TABLE photoLibrary
+(
+id int NOT NULL AUTO_INCREMENT,
+celebName VARCHAR(255) NOT NULL,
+photoURL VARCHAR(255) NOT NULL,
+PRIMARY KEY (id)
+);
+
+
+CREATE TABLE results
+(
+id int NOT NULL AUTO_INCREMENT,
+userName VARCHAR(255) NOT NULL,
+bestMatch VARCHAR(255) NOT NULL,
+matchScore DECIMAL(10,2) NOT NULL,
+PRIMARY KEY (id)
+);
