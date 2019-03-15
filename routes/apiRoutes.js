@@ -17,7 +17,9 @@ module.exports = function(app) {
 
   // Delete faces by id
   app.delete("/api/faces/:id", function(req, res) {
-    db.Example.destroy({ where: { id: req.params.id } }).then(function(dbFaces) {
+    db.Example.destroy({ where: { id: req.params.id } }).then(function(
+      dbFaces
+    ) {
       res.json(dbFaces);
     });
   });
