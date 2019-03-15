@@ -1,8 +1,8 @@
 {
   "development": {
     "username": "root",
-    "password": "Emmitt13!!?",
-    "database": "exampledb",
+    "password": null,
+    "database": "facedb",
     "host": "localhost",
     "dialect": "mysql"
   },
