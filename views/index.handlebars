@@ -1,72 +1,69 @@
-<div class="container">
-  <div class="row">
-    <br>
-    <div class="col s12">
-      <div class="card purple darken-4">
-        <div class="card-content white-text">
-          <span class="card-title amber-text">
-            <h2><strong>Look Alike</strong> </h2>
-          </span>
-          <hr>
-
-
-          <div class="row">
-            <div class="col s12">
-              <h3 class="deep-orange-text">Upload Your Picture...</h3>
-              <form method='post' action='/upload' enctype='multipart/form-data'>
-                <input type='file' name='image' />
-                <input type='submit' /></form>
-            </div>
-          </div>
-
-          <br>
-          <div class="row">
-            <div class="col s12">
-              <h3 class="center deep-orange-text">And Find Your Doppelganger!</h3>
-            </div>
-          </div>
-
-
-          <div class="row images-container">
-            <div class="col s6 userImage">
-              <div style="text-align: center">
-                <div class="card">
-                  <div class="card-image">
-                    <img src="https://images.pexels.com/photos/814052/pexels-photo-814052.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260">
-                    <span class="card-title">Card Title</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col s6 compImage">
-              <div style="text-align: center">
-                <div class="card">
-                  <div class="card-image">
-                    <img src="https://images.pexels.com/photos/712513/pexels-photo-712513.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500">
-                    <span class="card-title">Card Title</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <br>
-
-        <div class="row">
-          <div class="col s12">
-            <div class="card-action right-align ">
-              <div class="btn-large pulse waves-effect waves-light amber purple-text text-darken-4">
-                <a class="purple-text text-darken-4" href="/survey"><b>Doppelganger Me</b></a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-
+<main>
+  <div class="container">
+    <div class="row" id="title_row">
+      <div class="col s12">
+        <h1><strong>Look Alike</strong> </h1>
       </div>
     </div>
+
+
+    <div class="row userInstructions">
+      <div class="col s12">
+        <h2 class="deep-orange-text">Upload Your Picture...</h2>
+      </div>
+    </div>
+
+    <div class="row userInput">
+      <div class="col s12">
+        <form method='post' action='/upload' enctype='multipart/form-data'>
+          <input type='file' name='image' />
+          <input type='submit' /></form>
+      </div>
+    </div>
+
+    <div class="row tagLine">
+      <div class="col s12 ">
+        <h3 class="center deep-orange-text">And Find Your Doppelganger!</h3>
+      </div>
+    </div>
+
+
+    <div class="row images-container">
+      <div class="col s12 l6 userImage">
+        <div style="text-align: center">
+          <div class="card">
+            <div class="card-image">
+              <img src="https://images.pexels.com/photos/814052/pexels-photo-814052.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260">
+              <span class="card-title">Card Title</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col s12 l6 compImage">
+        <div style="text-align: center">
+          <div class="card">
+            <div class="card-image">
+              <img src="https://images.pexels.com/photos/712513/pexels-photo-712513.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500">
+              <span class="card-title">Card Title</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col s12">
+        <div class="card-action right-align ">
+          <div class="btn-large pulse waves-effect waves-light amber purple-text text-darken-4">
+            <a class="purple-text text-darken-4" href="/survey"><b>Doppelganger Me</b></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
-</div>
+
+</main>
 
 
 {{!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
