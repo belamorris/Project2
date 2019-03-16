@@ -1,0 +1,18 @@
+DROP DATABASE IF EXISTS dra3c5z6lyv8cu9x;
+CREATE DATABASE dra3c5z6lyv8cu9x;
+
+USE dra3c5z6lyv8cu9x;
+
+-- Create the table plans.
+CREATE TABLE photolibraries
+(
+id int NOT NULL AUTO_INCREMENT,
+celebName VARCHAR(255) NOT NULL,
+photoURL VARCHAR(255) NOT NULL,
+createdAt TIMESTAMP NOT NULL DEFAULT NOW(),
+updatedAT TIMESTAMP NOT NULL DEFAULT NOW() ON UPDATE NOW(),
+
+PRIMARY KEY (id)
+);
+
+
