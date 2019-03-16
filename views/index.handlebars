@@ -15,9 +15,11 @@
 
     <div class="row userInput">
       <div class="col s12">
-        <form method='post' action='/upload' enctype='multipart/form-data'>
-          <input type='file' name='image' />
-          <input type='submit' /></form>
+        <form method='POST' action='/upload' enctype='multipart/form-data'>
+          <input type='file' name='image' class="col s12 l5 btn waves-effect waves-light userImgSelect" />
+          <button class="col s12 l5 offset-l2 btn waves-effect waves-light userPhotoSubmit" type='submit' />Upload You
+          </button>
+        </form>
       </div>
     </div>
 
@@ -33,18 +35,19 @@
         <div style="text-align: center">
           <div class="card">
             <div class="card-image">
-              <img src="https://images.pexels.com/photos/814052/pexels-photo-814052.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260">
-              <span class="card-title">Card Title</span>
+              <img id="userImgPlace" src="https://images.pexels.com/photos/814052/pexels-photo-814052.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260">
+              <span class="card-title" id="userName">Card Title</span>
             </div>
           </div>
         </div>
       </div>
+
       <div class="col s12 l6 compImage">
         <div style="text-align: center">
           <div class="card">
             <div class="card-image">
               <img src="https://images.pexels.com/photos/712513/pexels-photo-712513.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500">
-              <span class="card-title">Card Title</span>
+              <span class="card-title" id="compName">Card Title</span>
             </div>
           </div>
         </div>
