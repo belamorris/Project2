@@ -22,14 +22,14 @@ html {
   /* font-family: 'Encode Sans Expanded', sans-serif; */
   /* font-family: 'Bellefair', serif; */
   /* font-family: 'Englebert', sans-serif; */
-  /* font-family: 'Kranky', cursive; */
-  font-family: 'Life Savers', cursive;
-  background-color: #272727;
-  background-color: #90CCF4;
-  background-color: #F78888;
-  background-color: #5DA2D5;
+  font-family: 'Kranky', cursive;
+  /* font-family: 'Life Savers', cursive; */
+  /* background-color: #272727; */
+  /* background-color: #90CCF4; */
+  /* background-color: #F78888; */
+  /* background-color: #5DA2D5; */
   background-color: #F3D250;
-  background-color: #ECECEC;
+  /* background-color: #ECECEC; */
 }
 
 #title_row {
