@@ -3,12 +3,13 @@ var db = require("../models");
 module.exports = function(app) {
   // Load index page
   app.get("/", function(req, res) {
-    db.Faces.findAll({}).then(function(dbFaces) {
-      res.render("index", {
-        msg: "Welcome!",
-        facesdb: dbFaces
-      });
-    });
+    res.render("index");
+    // db.photoLibrary.findAll({}).then(function(dbFaces) {
+    //   res.render("index", {
+    //     msg: "Welcome!",
+    //     facesdb: dbFaces
+    //   });
+    // });
   });
 
   // Load example page and pass in an example by id

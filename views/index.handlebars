@@ -2,20 +2,20 @@
   <div class="container">
     <div class="row" id="title_row">
       <div class="col s12">
-        <h1><strong>Look Alike</strong> </h1>
+        <h1 class="theTitle">Look Alike</h1>
       </div>
     </div>
 
 
     <div class="row userInstructions">
       <div class="col s12">
-        <h2 class="deep-orange-text">Upload Your Picture...</h2>
+        <h2 class="useInstruct">Upload Your Picture...</h2>
       </div>
     </div>
 
     <div class="row userInput">
       <div class="col s12">
-        <form method='POST' action='/upload' enctype='multipart/form-data'>
+        <form class="userPhotoSelect" method='POST' action='/upload' enctype='multipart/form-data'>
           <input type='file' name='image' class="col s12 l5 btn waves-effect waves-light userImgSelect" />
           <button class="col s12 l5 offset-l2 btn waves-effect waves-light userPhotoSubmit" type='submit' />Upload You
           </button>
@@ -25,7 +25,7 @@
 
     <div class="row tagLine">
       <div class="col s12 ">
-        <h3 class="center deep-orange-text">And Find Your Doppelganger!</h3>
+        <h3 class="center">And Find Your Doppelganger!</h3>
       </div>
     </div>
 
@@ -56,9 +56,9 @@
 
     <div class="row">
       <div class="col s12">
-        <div class="card-action right-align ">
-          <div class="btn-large pulse waves-effect waves-light amber purple-text text-darken-4">
-            <a class="purple-text text-darken-4" href="/survey"><b>Doppelganger Me</b></a>
+        <div class="card-action right-align "> 
+          <div class="btn-large pulse waves-effect waves-light getTwin">
+            <a class="doppWriting"><b>Doppelganger Me</b></a>
           </div>
         </div>
       </div>
@@ -69,5 +69,5 @@
 </main>
 
 
-{{!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="/js/index.js"></script> --}}
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>

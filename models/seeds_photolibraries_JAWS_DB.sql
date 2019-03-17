@@ -1,6 +1,6 @@
 USE dra3c5z6lyv8cu9x;
 
-INSERT INTO photolibrary(celebName, photoURL)
+INSERT INTO photolibraries(celebName, photoURL)
 VALUES ("Aurore", "https://images.pexels.com/photos/814052/pexels-photo-814052.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"),
        ("Stephanie", "https://images.pexels.com/photos/712513/pexels-photo-712513.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"),
        ("Katalina", "https://images.pexels.com/photos/789305/pexels-photo-789305.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"),
@@ -26,4 +26,4 @@ VALUES ("Aurore", "https://images.pexels.com/photos/814052/pexels-photo-814052.j
        ("Kamon","https://images.pexels.com/photos/1153334/pexels-photo-1153334.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"),
        ("Vinh","https://images.pexels.com/photos/1618592/pexels-photo-1618592.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500");
        
-SELECT * FROM photolibrary;
+SELECT * FROM photolibraries;
