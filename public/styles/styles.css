@@ -1,9 +1,11 @@
 /* Color Scheme 
-#F78888
-#F3D250
-#ECECEC
-#90CCF4
-#5DA2D5
+#F78888  pink shade
+#F3D250  butter yellow
+#ECECEC  offwhite
+#90CCF4  light blue
+#5DA2D5  med light blue
+#272727  dark slate gray
+#FF5722  deep orange
 
 */
 
@@ -16,20 +18,43 @@ html {
 }
 
 .container {
-  /* font-family: 'Pompiere', cursive; */
-  /* font-family: 'Cormorant SC', serif; */
-  /* font-family: 'Vast Shadow', cursive; */
-  /* font-family: 'Encode Sans Expanded', sans-serif; */
-  /* font-family: 'Bellefair', serif; */
-  /* font-family: 'Englebert', sans-serif; */
   font-family: 'Kranky', cursive;
-  /* font-family: 'Life Savers', cursive; */
-  /* background-color: #272727; */
-  /* background-color: #90CCF4; */
-  /* background-color: #F78888; */
-  /* background-color: #5DA2D5; */
   background-color: #F3D250;
-  /* background-color: #ECECEC; */
+  color: #FF5722;
+  font-weight: 900;
+  /* text-shadow: 1px 1px 0 #272727; */
+
+}
+
+.theTitle {
+  color: #272727; 
+  font-weight: 550;
+}
+
+h2,
+h3 {
+  font-weight: 500;
+}
+
+.btn {
+  font-family: 'Kranky', cursive;
+  color: #F3D250;
+  font-size: 150%;
+  text-shadow: 1px 3px #FF5722;
+  background-color: #5DA2D5;
+  font-weight: bold
+}
+
+
+.doppWriting {
+  color: #F3D250;
+  font-size: 150%;
+  text-shadow: 1px 3px #FF5722 
+}
+
+.btn-large {
+  background-color: #5DA2D5;
+  margin-bottom: 1%;
 }
 
 #title_row {

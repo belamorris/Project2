@@ -22,7 +22,7 @@ app.engine(
 app.set("view engine", "handlebars");
 
 // Routes
-require("./routes/facesRoute");
+// require("./public/js/facesRoute");
 require("./routes/apiRoutes")(app);
 require("./routes/htmlRoutes")(app);
 
