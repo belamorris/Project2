@@ -15,12 +15,12 @@ module.exports = function(app) {
     });
   });
 
-  // // Create a new example
-  // app.post("/api/faces", function(req, res) {
-  //   db.Faces.create(req.body).then(function(dbFaces) {
-  //     res.json(dbFaces);
-  //   });
-  // });
+  // Create a new example
+  app.post("/api/photolibraries", function(req, res) {
+    db.photolibraries.create(req.body).then(function(dbPhotoLibrary) {
+      res.json(dbPhotoLibrary);
+    });
+  });
 
   // // Delete faces by id
   // app.delete("/api/faces/:id", function(req, res) {

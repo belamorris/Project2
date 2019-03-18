@@ -15,10 +15,11 @@
 
     <div class="row userInput">
       <div class="col s12">
-        <form class="userPhotoSelect" method='POST' action='/upload' enctype='multipart/form-data'>
-          <input type='file' name='image' class="col s12 l5 btn waves-effect waves-light userImgSelect" />
-          <button class="col s12 l5 offset-l2 btn waves-effect waves-light userPhotoSubmit" type='submit' />Upload You
+        <form action="POST">
+          <input class="col s12 l5" type="text" autocomplete="off" id="example-text" name="userImage" placeholder=" Enter First Name">
+          <button class="col s12 l5 offset-l2 btn-large waves-effect waves-light userPhotoSubmit" id="submit" /><b>Doppelganger Me</b>
           </button>
+          <input class="col s12" type="text" autocomplete="off" id="example-description" name="userImage" placeholder=" Enter Image URL">
         </form>
       </div>
     </div>
@@ -36,7 +37,7 @@
           <div class="card">
             <div class="card-image">
               <img id="userImgPlace" src="https://images.pexels.com/photos/814052/pexels-photo-814052.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260">
-              <span class="card-title" id="userName">Card Title</span>
+              <span class="card-title" id="userName">Your Image</span>
             </div>
           </div>
         </div>
@@ -47,23 +48,12 @@
           <div class="card">
             <div class="card-image">
               <img src="https://images.pexels.com/photos/712513/pexels-photo-712513.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500">
-              <span class="card-title" id="compName">Card Title</span>
+              <span class="card-title" id="compName">Match 57%</span>
             </div>
           </div>
         </div>
       </div>
     </div>
-
-    <div class="row">
-      <div class="col s12">
-        <div class="card-action right-align "> 
-          <div class="btn-large pulse waves-effect waves-light getTwin">
-            <a class="doppWriting"><b>Doppelganger Me</b></a>
-          </div>
-        </div>
-      </div>
-    </div>
-
   </div>
 
 </main>
