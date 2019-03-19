@@ -153,6 +153,7 @@ function faceCompare() {
 
   imagePic1 = image1[index];
   image2 = $exampleDescription.val().trim();
+  console.log("Image 2 is: " + image2);
  
   var compareQuery =
     mainURL +

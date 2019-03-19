@@ -1,10 +1,14 @@
 require("dotenv").config();
 var express = require("express");
+var app = express();
+var server = require('http').createServer(app);
+var io = require('socket.io')(server);
 var exphbs = require("express-handlebars");
+
 
 var db = require("./models");
 
-var app = express();
+// var app = express();
 var PORT = process.env.PORT || 3000;
 
 // Middleware
@@ -36,7 +40,8 @@ if (process.env.NODE_ENV === "test") {
 
 // Starting the server, syncing our models ------------------------------------/
 db.sequelize.sync(syncOptions).then(function() {
-  app.listen(PORT, function() {
+  io.on('connection', () => { /* … */ });
+  server.listen(PORT, function() {
     console.log(
       "==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.",
       PORT,
