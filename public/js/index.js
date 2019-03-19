@@ -34,6 +34,8 @@ var image1 = [
 // console.log("image2 URL is: " + image2);
 var index = 0;
 var imagePic1;
+var currentHighCon = 0;
+
 var compResults = {};
 
 // Get references to page elements
@@ -150,7 +152,7 @@ function faceCompare() {
       "==========================================="
     )
   );
-
+  // var currentHighCon = 0;
   imagePic1 = image1[index];
   image2 = $exampleDescription.val().trim();
   console.log("Image 2 is: " + image2);
@@ -187,6 +189,14 @@ function faceCompare() {
 
         var thresholdVals = Object.values(response.thresholds);
 
+        if (response.confidence > currentHighCon) {
+          currentHighCon = response.confidence;
+          imageBestMatch = image1[index];
+        }
+
+        console.log("The Current High Confidence is: " + currentHighCon);
+        console.log("The Image URL for the Best Match is: " + imageBestMatch);
+
         compResults = Object.assign({
           [index]: {
             confidence: response.confidence,
@@ -196,27 +206,28 @@ function faceCompare() {
           }
         }, compResults);
 
-        console.log(
-          (
-            "\n\t If confidence rating is less than " +
-            thresholdVals[0] +
-            ", the two images are not of the same person. "
-          )
-        );
-        console.log(
-          (
-            "\n\t If confidence rating is around " +
-            thresholdVals[2] +
-            ", the two images are somewhat alike. "
-          )
-        );
-        console.log(
-          (
-            "\n\t If the confidence rating is greater than " +
-            thresholdVals[1] +
-            ", it is highly possible the two people are the same.\n "
-          )
-        ); 
+        // console.log(
+        //   (
+        //     "\n\t If confidence rating is less than " +
+        //     thresholdVals[0] +
+        //     ", the two images are not of the same person. "
+        //   )
+        // );
+        // console.log(
+        //   (
+        //     "\n\t If confidence rating is around " +
+        //     thresholdVals[2] +
+        //     ", the two images are somewhat alike. "
+        //   )
+        // );
+        // console.log(
+        //   (
+        //     "\n\t If the confidence rating is greater than " +
+        //     thresholdVals[1] +
+        //     ", it is highly possible the two people are the same.\n "
+        //   )
+        // ); 
+
 
         if (index < image1.length - 1) {
           console.log(
