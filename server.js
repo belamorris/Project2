@@ -38,9 +38,13 @@ if (process.env.NODE_ENV === "test") {
   syncOptions.force = true;
 }
 
+io.on('connection', () =>{
+  console.log('a user is connected')
+})
+
 // Starting the server, syncing our models ------------------------------------/
 db.sequelize.sync(syncOptions).then(function() {
-  io.on('connection', () => { /* … */ });
+  io.on('connection', () => { console.log("a user is connected") })
   server.listen(PORT, function() {
     console.log(
       "==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.",
