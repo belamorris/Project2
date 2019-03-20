@@ -38,7 +38,6 @@ var compResults = {};
 var $exampleText = $("#example-text");
 var $exampleDescription = $("#example-description");
 var $submitBtn = $("#submit");
-var $userImage = $("#userImgPlace");
 var $userName = $("#userName");
 var $userPhoto = $("#userImgPlace");
 // var $exampleList = $("#example-list");
@@ -79,14 +78,21 @@ var refreshExamples = function () {
     console.log("submitted image: " + submittedImage.photoURL);
     var $img = $("#userImgPlace")
       .attr("id", "userImgPlace")
-      .attr("src", submittedImage.photoURL);
+      .text("src", submittedImage.photoURL);
 
-    console.log("Image is: " + $img);
-    return $img;
+    var $name = $("#userName")
+      .attr("id", "userName")
+      .text(submittedImage.celebName);
+
+    console.log("Image is: " + $name);
+    return $img;//, $name;
   });
   $userPhoto.empty();
-  $userPhoto.append($img);
-}
+  // $userName.empty();
+  // $userPhoto.append($img);
+  // $userName.append($name);
+
+};
 
 // var $examples = data.map(function (example) {
 //   var $a = $("<a>")
