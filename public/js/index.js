@@ -38,8 +38,11 @@ var compResults = {};
 var $exampleText = $("#example-text");
 var $exampleDescription = $("#example-description");
 var $submitBtn = $("#submit");
+var $userImage = $("#userImgPlace");
+var $userName = $("#userName");
+var $userPhoto = $("#userImgPlace");
 // var $exampleList = $("#example-list");
-// var $getTwin = $("#getTwin");
+
 
 // The API object contains methods for each kind of request we'll make
 var API = {
@@ -70,31 +73,46 @@ var API = {
 // refreshExamples gets new examples from the db and repopulates the list
 var refreshExamples = function () {
   API.getExamples().then(function (data) {
-    var $examples = data.map(function (example) {
-      var $a = $("<a>")
-        .text(example.text)
-        .attr("href", "/example/" + example.id);
+    console.log(data);
+    // var $examples = data.map(function (example) {
+    var submittedImage = data[data.length - 1];
+    console.log("submitted image: " + submittedImage.photoURL);
+    var $img = $("#userImgPlace")
+      .attr("id", "userImgPlace")
+      .attr("src", submittedImage.photoURL);
 
-      var $li = $("<li>")
-        .attr({
-          class: "list-group-item",
-          "data-id": example.id
-        })
-        .append($a);
-
-      var $button = $("<button>")
-        .addClass("btn btn-danger float-right delete")
-        .text("ｘ");
-
-      $li.append($button);
-
-      return $li;
-    });
-
-    $exampleList.empty();
-    $exampleList.append($examples);
+    console.log("Image is: " + $img);
+    return $img;
   });
-};
+  $userPhoto.empty();
+  $userPhoto.append($img);
+}
+
+// var $examples = data.map(function (example) {
+//   var $a = $("<a>")
+//     .text(example.text)
+//     .attr("href", "/example/" + example.id);
+
+//   var $li = $("<li>")
+//     .attr({
+//       class: "list-group-item",
+//       "data-id": example.id
+//     })
+//     .append($a);
+
+//   var $button = $("<button>")
+//     .addClass("btn btn-danger float-right delete")
+//     .text("ｘ");
+
+//   $li.append($button);
+
+//   return $li;
+// });
+
+//     $exampleList.empty();
+//     $exampleList.append($examples);
+//   });
+// };
 
 // handleFormSubmit is called whenever we submit a new example
 // Save the new example to the db and refresh the list
@@ -114,6 +132,7 @@ var handleFormSubmit = function (event) {
   }
 
   API.saveExample(example).then(function () {
+    refreshExamples();
     faceCompare();
     // console.log("MADE IT HERE");
   });
@@ -152,7 +171,7 @@ function faceCompare() {
   imagePic1 = image1[index];
   image2 = $exampleDescription.val().trim();
   console.log("Image 2 is: " + image2);
- 
+
   var compareQuery =
     mainURL +
     "?" +
@@ -163,93 +182,93 @@ function faceCompare() {
     imagePic1 +
     "&image_url2=" +
     image2;
-    console.log(compareQuery);
+  console.log(compareQuery);
   $.ajax({
     url: compareQuery,
     type: "POST",
     dataType: "JSON",
     success: function (response) {
       console.log(response);
-        //   console.log(response.data);
-        //   var confidence = new Object(
-        //     (compResults.confidence = response.data.confidence)
-        //   );
+      //   console.log(response.data);
+      //   var confidence = new Object(
+      //     (compResults.confidence = response.data.confidence)
+      //   );
+      console.log(
+        "\n\n\t\t  The confidence rating is: " +
+        response.confidence +
+        "  "
+      );
+
+      var thresholdVals = Object.values(response.thresholds);
+
+      if (response.confidence > currentHighCon) {
+        currentHighCon = response.confidence;
+        imageBestMatch = image1[index];
+      }
+
+      console.log("The Current High Confidence is: " + currentHighCon);
+      console.log("The Image URL for the Best Match is: " + imageBestMatch);
+
+      compResults = Object.assign({
+        [index]: {
+          confidence: response.confidence,
+          lowThreshold: thresholdVals[0],
+          midThreshold: thresholdVals[2],
+          highThreshold: thresholdVals[1]
+        }
+      }, compResults);
+
+      // console.log(
+      //   (
+      //     "\n\t If confidence rating is less than " +
+      //     thresholdVals[0] +
+      //     ", the two images are not of the same person. "
+      //   )
+      // );
+      // console.log(
+      //   (
+      //     "\n\t If confidence rating is around " +
+      //     thresholdVals[2] +
+      //     ", the two images are somewhat alike. "
+      //   )
+      // );
+      // console.log(
+      //   (
+      //     "\n\t If the confidence rating is greater than " +
+      //     thresholdVals[1] +
+      //     ", it is highly possible the two people are the same.\n "
+      //   )
+      // ); 
+
+
+      if (index < image1.length - 1) {
         console.log(
-            "\n\n\t\t  The confidence rating is: " +
-            response.confidence +
-            "  "
+          "====================== End of API Call " +
+          (index + 1) +
+          "===========================================\n"
+        );
+        index++;
+        faceCompare();
+      } else {
+        console.log(
+          "====================== End of API Call " +
+          (index + 1) +
+          "===========================================\n"
         );
 
-        var thresholdVals = Object.values(response.thresholds);
 
-        if (response.confidence > currentHighCon) {
-          currentHighCon = response.confidence;
-          imageBestMatch = image1[index];
-        }
-
-        console.log("The Current High Confidence is: " + currentHighCon);
-        console.log("The Image URL for the Best Match is: " + imageBestMatch);
-
-        compResults = Object.assign({
-          [index]: {
-            confidence: response.confidence,
-            lowThreshold: thresholdVals[0],
-            midThreshold: thresholdVals[2],
-            highThreshold: thresholdVals[1]
-          }
-        }, compResults);
-
-        // console.log(
-        //   (
-        //     "\n\t If confidence rating is less than " +
-        //     thresholdVals[0] +
-        //     ", the two images are not of the same person. "
-        //   )
-        // );
-        // console.log(
-        //   (
-        //     "\n\t If confidence rating is around " +
-        //     thresholdVals[2] +
-        //     ", the two images are somewhat alike. "
-        //   )
-        // );
-        // console.log(
-        //   (
-        //     "\n\t If the confidence rating is greater than " +
-        //     thresholdVals[1] +
-        //     ", it is highly possible the two people are the same.\n "
-        //   )
-        // ); 
-
-
-        if (index < image1.length - 1) {
-          console.log (
-              "====================== End of API Call " +
-              (index + 1) +
-              "===========================================\n"
-          );
-          index++;
-          faceCompare();
-        } else {
-          console.log(
-              "====================== End of API Call " +
-              (index + 1) +
-              "===========================================\n"
-          );
-
-
-          var compObjView = JSON.stringify(compResults);
-          var jsonAccess = JSON.parse(compObjView);
-          // console.log("Image comparison results are: " + compObjView); //This is an object containing the condfidence rating & low, mid, and high threshold values for each image comparison pair
-          // console.log(Object.keys(compResults));
-          // console.log(jsonAccess["0"]); //Example accessing entire first comparison info
-          // console.log("The low threshold cutoff is " + jsonAccess["0"].lowThreshold); //Example accessing specific information from first comparison info
-          return;
-        }
+        var compObjView = JSON.stringify(compResults);
+        var jsonAccess = JSON.parse(compObjView);
+        // console.log("Image comparison results are: " + compObjView); //This is an object containing the condfidence rating & low, mid, and high threshold values for each image comparison pair
+        // console.log(Object.keys(compResults));
+        // console.log(jsonAccess["0"]); //Example accessing entire first comparison info
+        // console.log("The low threshold cutoff is " + jsonAccess["0"].lowThreshold); //Example accessing specific information from first comparison info
+        return;
       }
-      // .catch(function (error) {
-      //   console.log(error);
-      // })
+    }
+    // .catch(function (error) {
+    //   console.log(error);
+    // })
   });
 
 };
