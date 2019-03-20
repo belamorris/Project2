@@ -69,7 +69,13 @@ var API = {
 
 // refreshExamples gets new examples from the db and repopulates the list
 var refreshExamples = function () {
-    API.getExamples(url);
+    API.getExamples().then(function(data){
+      // console.log(data);
+      var $examples = data.map(function (example) {
+        var $img2 = $("#userImgPlace")
+        .ssrc
+      })
+    });
   }
 
     // var $examples = data.map(function (example) {
@@ -116,7 +122,7 @@ var refreshExamples = function () {
       }
 
       API.saveExample(example).then(function () {
-        $("#userImgPlace").src=example.photoURL;
+        refreshExamples();
         faceCompare();
         // console.log("MADE IT HERE");
       });
