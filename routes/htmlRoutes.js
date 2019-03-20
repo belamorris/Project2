@@ -3,13 +3,14 @@ var db = require("../models");
 module.exports = function(app) {
   // Load index page
   app.get("/", function(req, res) {
-    res.render("index");
-    // db.photoLibrary.findAll({}).then(function(dbFaces) {
-    //   res.render("index", {
-    //     msg: "Welcome!",
-    //     facesdb: dbFaces
-    //   });
-    // });
+    // res.render("index");
+    db.photolibraries.findAll({}).then(function(dbPhotoLibraries) {
+      res.render("index", {
+        msg: "The PhotoLibrary is Here!",
+        photoLib: dbPhotoLibraries
+      });
+      // console.log(dbPhotoLibraries);
+    });
   });
 
   // Load example page and pass in an example by id

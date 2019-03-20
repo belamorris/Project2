@@ -17,7 +17,8 @@
       <div class="col s12">
         <form action="POST">
           <input class="col s12 l5" type="text" autocomplete="off" id="example-text" name="userImage" placeholder=" Enter First Name">
-          <button class="col s12 l5 offset-l2 btn-large waves-effect waves-light userPhotoSubmit" id="submit" /><b>Doppelganger Me</b>
+          <button class="col s12 l5 offset-l2 btn-large waves-effect waves-light userPhotoSubmit" id="submit" /><b>Doppelganger
+            Me</b>
           </button>
           <input class="col s12" type="text" autocomplete="off" id="example-description" name="userImage" placeholder=" Enter Image URL">
         </form>
@@ -36,8 +37,12 @@
         <div style="text-align: center">
           <div class="card">
             <div class="card-image">
-              <img id="userImgPlace" src="https://images.pexels.com/photos/814052/pexels-photo-814052.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260">
-              <span class="card-title" id="userName">Your Image</span>
+              {{#each photoLib}}
+                {{#if @last}}
+                <img id="userImgPlace" src={{this.photoURL}}>
+                <span class="card-title" id="userName">{{this.celebName}}</span>
+                {{/if}}
+              {{/each}}
             </div>
           </div>
         </div>

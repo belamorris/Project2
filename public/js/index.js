@@ -1,6 +1,3 @@
-// var axios = require("axios");
-// var chalk = require("chalk");
-
 var mainURL = "https://api-us.faceplusplus.com/facepp/v3/compare";
 var apiKey = "api_key=MYV-AMKLwV0A7LFZOFN4zJCKEIdLX4uJ";
 var apiSecret = "api_secret=IeyKWPy6LfTvWl6Oy5-Kesy8YnKoNIdV";
@@ -30,8 +27,7 @@ var image1 = [
   "https://images.pexels.com/photos/1153334/pexels-photo-1153334.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
   "https://images.pexels.com/photos/1618592/pexels-photo-1618592.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
 ];
-// var image2 = example.photoURL;
-// console.log("image2 URL is: " + image2);
+
 var index = 0;
 var imagePic1;
 var currentHighCon = 0;
@@ -59,7 +55,7 @@ var API = {
   },
   getExamples: function () {
     return $.ajax({
-      url: "api/examples",
+      url: "api/photolibraries",
       type: "GET"
     });
   },
@@ -112,14 +108,14 @@ var handleFormSubmit = function (event) {
 
 
 
-  // if (!(example.text && example.description)) {
-  //   alert("You must enter an example text and description!");
-  //   return;
-  // }
+  if (!(example.celebName && example.photoURL)) {
+    alert("You must enter your first name and an image URL!");
+    return;
+  }
 
   API.saveExample(example).then(function () {
     faceCompare();
-    console.log("MADE IT HERE");
+    // console.log("MADE IT HERE");
   });
 
   // $exampleText.val("");
@@ -173,18 +169,15 @@ function faceCompare() {
     type: "POST",
     dataType: "JSON",
     success: function (response) {
-      console.log("HERE I AM!!!!");
       console.log(response);
         //   console.log(response.data);
         //   var confidence = new Object(
         //     (compResults.confidence = response.data.confidence)
         //   );
         console.log(
-          (
             "\n\n\t\t  The confidence rating is: " +
             response.confidence +
             "  "
-          )
         );
 
         var thresholdVals = Object.values(response.thresholds);
@@ -230,29 +223,27 @@ function faceCompare() {
 
 
         if (index < image1.length - 1) {
-          console.log(
-            (
+          console.log (
               "====================== End of API Call " +
               (index + 1) +
               "===========================================\n"
-            )
           );
           index++;
           faceCompare();
         } else {
           console.log(
-            (
               "====================== End of API Call " +
               (index + 1) +
               "===========================================\n"
-            )
           );
+
+
           var compObjView = JSON.stringify(compResults);
           var jsonAccess = JSON.parse(compObjView);
-          console.log("Image comparison results are: " + compObjView); //This is an object containing the condfidence rating & low, mid, and high threshold values for each image comparison pair
-          console.log(Object.keys(compResults));
-          console.log(jsonAccess["0"]); //Example accessing entire first comparison info
-          console.log("The low threshold cutoff is " + jsonAccess["0"].lowThreshold); //Example accessing specific information from first comparison info
+          // console.log("Image comparison results are: " + compObjView); //This is an object containing the condfidence rating & low, mid, and high threshold values for each image comparison pair
+          // console.log(Object.keys(compResults));
+          // console.log(jsonAccess["0"]); //Example accessing entire first comparison info
+          // console.log("The low threshold cutoff is " + jsonAccess["0"].lowThreshold); //Example accessing specific information from first comparison info
           return;
         }
       }
