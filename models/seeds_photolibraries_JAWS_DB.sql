@@ -1,4 +1,4 @@
-USE dra3c5z6lyv8cu9x;
+USE fhlbt0dduah83egm;
 
 INSERT INTO photolibraries(celebName, photoURL)
 VALUES ("Aurore", "https://images.pexels.com/photos/814052/pexels-photo-814052.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"),

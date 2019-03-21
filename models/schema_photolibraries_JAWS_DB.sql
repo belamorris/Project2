@@ -1,7 +1,7 @@
-DROP DATABASE IF EXISTS dra3c5z6lyv8cu9x;
-CREATE DATABASE dra3c5z6lyv8cu9x;
+DROP DATABASE IF EXISTS fhlbt0dduah83egm;
+CREATE DATABASE fhlbt0dduah83egm;
 
-USE dra3c5z6lyv8cu9x;
+USE fhlbt0dduah83egm;
 
 -- Create the table plans.
 CREATE TABLE photolibraries
