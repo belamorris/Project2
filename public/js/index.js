@@ -31,8 +31,11 @@ var image1 = [
 var index = 0;
 var imagePic1;
 var currentHighCon = 0;
-
 var compResults = {};
+var $img;
+var $name;
+var $compareImg;
+var $compareName;
 
 // Get references to page elements
 var $exampleText = $("#example-text");
@@ -41,6 +44,9 @@ var $submitBtn = $("#submit");
 var $userImage = $("#userImgPlace");
 var $userName = $("#userName");
 var $userPhoto = $("#userImgPlace");
+var $comparisonName = $("#compName");
+var $compPhoto = $("#compImgPlace");
+
 // var $exampleList = $("#example-list");
 
 
@@ -74,18 +80,25 @@ var API = {
 var refreshExamples = function () {
   API.getExamples().then(function (data) {
     console.log(data);
-    // var $examples = data.map(function (example) {
     var submittedImage = data[data.length - 1];
     console.log("submitted image: " + submittedImage.photoURL);
-    var $img = $("#userImgPlace")
+    $img = $("#userImgPlace")
       .attr("id", "userImgPlace")
       .attr("src", submittedImage.photoURL);
 
-    console.log("Image is: " + $img);
-    return $img;
+    $name = $("#userName")
+      .attr("id", "userName")
+      .text(submittedImage.celebName);
+
+    console.log("Name is: " + submittedImage.celebName);
+    return $img, $name;
   });
+
+  console.log("$img is: " + $img);
   $userPhoto.empty();
+  $userName.empty();
   $userPhoto.append($img);
+  $userName.append($name);
 }
 
 // var $examples = data.map(function (example) {
@@ -199,6 +212,10 @@ function faceCompare() {
         "  "
       );
 
+      confidenceLvl = response.confidence;
+
+      updateComparison(index, confidenceLvl);
+
       var thresholdVals = Object.values(response.thresholds);
 
       if (response.confidence > currentHighCon) {
@@ -272,3 +289,29 @@ function faceCompare() {
   });
 
 };
+
+//==========Updates comparison Photo and name =========== 
+function updateComparison(index, confidenceLvl) {
+  API.getExamples().then(function (info) {
+    console.log(info);
+    var compImage = info[index];
+    console.log("Comparison image: " + compImage.photoURL);
+
+    console.log ("MADE IT HERE!!!");
+
+    $compareImg = $("#compImgPlace")
+      .attr("id", "compImgPlace")
+      .attr("src", compImage.photoURL);
+
+    $compareName = $("#compName")
+      .attr("id", "compName")
+      .text(compImage.celebName + " Match % = " + confidenceLvl);
+
+    console.log("Name is: " + compImage.celebName);
+    return $compareImg, $compareName;
+  });
+  $compPhoto.empty();
+  $comparisonName.empty();
+  $compPhoto.append($compareImg);
+  $comparisonName.append($compareName);
+}
