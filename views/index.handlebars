@@ -38,10 +38,10 @@
           <div class="card">
             <div class="card-image" id="userPhoto">
               {{#each photoLib}}
-                {{#if @last}}
-                <img id="userImgPlace" src={{this.photoURL}}>
-                <span class="card-title" id="userName">{{this.celebName}}</span>
-                {{/if}}
+              {{#if @last}}
+              <img id="userImgPlace" src={{this.photoURL}}>
+              <span class="card-title" id="userName">{{this.celebName}}</span>
+              {{/if}}
               {{/each}}
             </div>
           </div>
@@ -59,7 +59,20 @@
         </div>
       </div>
     </div>
+
+    <div class="numClients">
+      <span id="howMany"> Hi </span>
+    </div>
   </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    var socket = io();
+    socket.on('broadcast', function (data) {
+      var clientNumber = document.getElementById("howMany").innerHTML=data.description;
+
+    });
+  </script>
 
 </main>
 
