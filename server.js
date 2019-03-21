@@ -37,6 +37,7 @@ if (process.env.NODE_ENV === "test") {
   syncOptions.force = true;
 }
 
+
 var clients = 0;
 io.on("connection", function(socket) {
   clients++;
@@ -50,6 +51,7 @@ io.on("connection", function(socket) {
     });
   });
 });
+
 
 // Starting the server, syncing our models ------------------------------------/
 db.sequelize.sync(syncOptions).then(function() {
