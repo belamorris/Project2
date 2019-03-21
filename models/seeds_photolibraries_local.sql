@@ -7,7 +7,6 @@ VALUES ("Aurore", "https://images.pexels.com/photos/814052/pexels-photo-814052.j
        ("Luci","https://images.pexels.com/photos/886477/pexels-photo-886477.png?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"),
        ("Afia","https://images.pexels.com/photos/1994818/pexels-photo-1994818.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"),
        ("Rina","https://images.pexels.com/photos/1066116/pexels-photo-1066116.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"),
-       ("Monique","https://images.pexels.com/photos/1068207/pexels-photo-1068207.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"),
        ("Therese","https://images.pexels.com/photos/1181742/pexels-photo-1181742.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"),
        ("Akira","https://images.pexels.com/photos/977311/pexels-photo-977311.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"),
        ("Asha","https://images.pexels.com/photos/1832959/pexels-photo-1832959.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"),
