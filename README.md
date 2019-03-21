@@ -48,9 +48,9 @@ Try the [App](https://infinite-badlands-40246.herokuapp.com/).
 ## Built With
 VS Code - Text Editor
 ## Authored and Maintained By:
-Dennis Ries
-Robert Morris
-Cole Hilgers
+* Dennis Ries
+* Robert Morris
+* Cole Hilgers
 
 Contact: dtries@gmail.com
 
