@@ -8,7 +8,6 @@ var image1 = [
   "https://images.pexels.com/photos/886477/pexels-photo-886477.png?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
   "https://images.pexels.com/photos/1994818/pexels-photo-1994818.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
   "https://images.pexels.com/photos/1066116/pexels-photo-1066116.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
-  "https://images.pexels.com/photos/1068207/pexels-photo-1068207.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
   "https://images.pexels.com/photos/1181742/pexels-photo-1181742.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
   "https://images.pexels.com/photos/977311/pexels-photo-977311.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
   "https://images.pexels.com/photos/1832959/pexels-photo-1832959.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
@@ -31,6 +30,7 @@ var image1 = [
 var index = 0;
 var imagePic1;
 var currentHighCon = 0;
+var indexForMatch;
 var compResults = {};
 var $img;
 var $name;
@@ -221,10 +221,12 @@ function faceCompare() {
       if (response.confidence > currentHighCon) {
         currentHighCon = response.confidence;
         imageBestMatch = image1[index];
+        indexForMatch = index;
       }
 
       console.log("The Current High Confidence is: " + currentHighCon);
       console.log("The Image URL for the Best Match is: " + imageBestMatch);
+      console.log("The Index for the Best Match is: " + indexForMatch);
 
       compResults = Object.assign({
         [index]: {
@@ -273,6 +275,7 @@ function faceCompare() {
           "===========================================\n"
         );
 
+        compareFinished(indexForMatch, currentHighCon);
 
         var compObjView = JSON.stringify(compResults);
         var jsonAccess = JSON.parse(compObjView);
@@ -297,7 +300,7 @@ function updateComparison(index, confidenceLvl) {
     var compImage = info[index];
     console.log("Comparison image: " + compImage.photoURL);
 
-    console.log ("MADE IT HERE!!!");
+    console.log("MADE IT HERE!!!");
 
     $compareImg = $("#compImgPlace")
       .attr("id", "compImgPlace")
@@ -314,4 +317,34 @@ function updateComparison(index, confidenceLvl) {
   $comparisonName.empty();
   $compPhoto.append($compareImg);
   $comparisonName.append($compareName);
+}
+
+
+//==========Updates comparison Photo and name =========== 
+function compareFinished(indexForMatch, currentHighCon) {
+  API.getExamples().then(function (info) {
+    console.log(info);
+    console.log("The index for best match here is: " + indexForMatch);
+
+    var compImage = info[indexForMatch];
+    console.log("Comparison image: " + compImage.photoURL);
+
+    console.log("MADE IT HERE!!!");
+
+    $compareImg = $("#compImgPlace")
+      .attr("id", "compImgPlace")
+      .attr("src", compImage.photoURL);
+
+    $compareName = $("#compName")
+      .attr("id", "compName")
+      .text(compImage.celebName + " Best Match % = " + currentHighCon);
+
+    console.log("Name is: " + compImage.celebName);
+    return $compareImg, $compareName;
+  });
+  $compPhoto.empty();
+  $comparisonName.empty();
+  $compPhoto.append($compareImg);
+  $comparisonName.append($compareName);
+  alert("Finished, This is Your Doppelganger!");
 }
