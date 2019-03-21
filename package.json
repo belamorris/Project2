@@ -30,5 +30,18 @@
     "mocha": "^5.2.0",
     "nodemon": "^1.18.10",
     "prettier": "^1.13.7"
-  }
+  },
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dtries/Project2.git"
+  },
+  "keywords": [],
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/dtries/Project2/issues"
+  },
+  "homepage": "https://github.com/dtries/Project2#readme"
 }
